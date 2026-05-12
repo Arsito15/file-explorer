@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #ffffff;
+  --bg-soft: #ffffff;
+  --panel: #ffffff;
+  --panel-strong: #ffffff;
+  --text: #172033;
+  --muted: #6f7a8d;
+  --accent: #172033;
+  --accent-soft: rgba(23, 32, 51, 0.06);
+  --line: rgba(23, 32, 51, 0.12);
+  --danger: #c94545;
+  --shadow: 0 16px 40px rgba(23, 32, 51, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--bg);
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+}
+
+body::before {
+  content: none;
+}
+
+.app-shell {
+  position: relative;
+  min-height: 100vh;
+}
+
+.topbar {
+  background: #0d6efd;
+  border-bottom: 1px solid rgba(13, 110, 253, 0.2);
+}
+
+.brand-mark {
+  color: #ffffff !important;
+  font-size: 1.25rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hero-card,
+.panel-card,
+.stat-card {
+  border: 1px solid rgba(23, 32, 51, 0.08);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  color: var(--text);
+}
+
+.hero-card {
+  overflow: hidden;
+  background: var(--panel-strong);
+}
+
+.hero-card::after {
+  content: none;
+}
+
+.eyebrow,
+.section-title,
+.stat-label {
+  color: var(--accent);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 0.76rem;
+}
+
+.hero-title {
+  max-width: 14ch;
+  margin: 1rem 0;
+  font-size: clamp(2.3rem, 4vw, 4.4rem);
+  line-height: 0.95;
+}
+
+.hero-copy,
+.section-copy,
+.stat-caption,
+.hero-footnote,
+.empty-summary {
+  color: var(--muted);
+}
+
+.hero-copy {
+  max-width: 56ch;
+  margin-bottom: 2rem;
+  font-size: 1.02rem;
+  line-height: 1.8;
+}
+
+.stat-card .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 12.25rem;
+}
+
+.stat-value {
+  margin: 0.55rem 0 0.2rem;
+  font-size: clamp(2.1rem, 4vw, 3rem);
+}
+
+.section-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.controls-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.file-filter,
+.refresh-button {
+  min-width: 12rem;
+  border-radius: 999px;
+}
+
+.file-filter {
+  border: 1px solid var(--line);
+  background: var(--bg-soft);
+  color: var(--text);
+}
+
+.file-filter:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 0.2rem rgba(242, 183, 107, 0.15);
+}
+
+.refresh-button {
+  border-color: var(--line);
+  color: var(--text);
+}
+
+.refresh-button:hover,
+.refresh-button:focus {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.loading-state {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-height: 15rem;
+  color: var(--muted);
+}
+
+.status-alert {
+  border: 1px solid rgba(255, 141, 132, 0.3);
+  background: rgba(201, 69, 69, 0.08);
+  color: #8a2c2c;
+}
+
+.table-wrapper {
+  overflow: hidden;
+  border: 1px solid rgba(23, 32, 51, 0.08);
+  border-radius: 1.2rem;
+}
+
+.data-table {
+  margin-bottom: 0;
+  color: var(--text);
+}
+
+.data-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #f7f9fc;
+  border-bottom-color: var(--line);
+  color: var(--accent);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.data-table td,
+.data-table th {
+  padding: 1rem 1.15rem;
+  background: #ffffff;
+  border-color: rgba(23, 32, 51, 0.06);
+  vertical-align: middle;
+}
+
+.data-table tbody tr:hover td {
+  background: #f7f9fc;
+}
+
+.mono-cell,
+.hex-cell {
+  font-family: "Lucida Console", Monaco, monospace;
+  font-size: 0.88rem;
+}
+
+.hex-cell {
+  color: #32415e;
+  word-break: break-word;
+}
+
+.empty-text {
+  color: rgba(23, 32, 51, 0.45);
+  font-style: italic;
+}
+
+.empty-state-cell {
+  padding: 2.2rem !important;
+  color: var(--muted);
+  text-align: center;
+}
+
+.compact-copy {
+  margin-bottom: 1.25rem;
+}
+
+.file-summary-list {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.file-summary-item {
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(23, 32, 51, 0.08);
+  border-radius: 1rem;
+  background: #f7f9fc;
+}
+
+.file-summary-name {
+  font-family: "Lucida Console", Monaco, monospace;
+  color: var(--text);
+  word-break: break-word;
+}
+
+.file-summary-meta {
+  margin-top: 0.35rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+@media (max-width: 991px) {
+  .section-heading {
+    flex-direction: column;
+  }
+
+  .hero-title {
+    max-width: none;
+  }
+}
+
+@media (max-width: 575px) {
+  .brand-mark {
+    font-size: 1rem;
+  }
+
+  .controls-row {
+    width: 100%;
+  }
+
+  .file-filter,
+  .refresh-button {
+    width: 100%;
+  }
+}
