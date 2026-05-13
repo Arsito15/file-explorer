@@ -1,7 +1,7 @@
 import reducer, {
   loadFilesData,
   setSelectedFile
-} from '../filesSlice'
+} from '../store/filesSlice'
 
 describe('filesSlice', () => {
   it('stores the selected file filter', () => {

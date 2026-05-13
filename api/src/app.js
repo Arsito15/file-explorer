@@ -1,46 +1,20 @@
 const express = require('express')
-const {
-  fetchFilesData,
-  fetchFilesList
-} = require('./services/filesService')
+const swaggerUi = require('swagger-ui-express')
+const cors = require('./middlewares/cors')
+const errorHandler = require('./middlewares/errorHandler')
+const openApiSpec = require('./docs/openapi')
+const filesRoutes = require('./routes/filesRoutes')
 
 const app = express()
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*')
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Accept')
-  res.header('Access-Control-Allow-Methods', 'GET, OPTIONS')
-
-  if (req.method === 'OPTIONS') {
-    res.sendStatus(204)
-    return
-  }
-
-  next()
+app.use(cors)
+app.get('/openapi.json', (req, res) => {
+  res.json(openApiSpec)
 })
-
-app.get('/files/list', async (req, res) => {
-  try {
-    const files = await fetchFilesList()
-
-    res.json({ files })
-  } catch (error) {
-    res.status(502).json({
-      error: 'Failed to fetch remote files list'
-    })
-  }
-})
-
-app.get('/files/data', async (req, res) => {
-  try {
-    const files = await fetchFilesData(req.query.fileName)
-
-    res.json(files)
-  } catch (error) {
-    res.status(502).json({
-      error: 'Failed to fetch remote files'
-    })
-  }
-})
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(openApiSpec, {
+  explorer: true
+}))
+app.use('/files', filesRoutes)
+app.use(errorHandler)
 
 module.exports = app

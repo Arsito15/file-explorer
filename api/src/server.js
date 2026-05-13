@@ -1,5 +1,5 @@
 const app = require('./app')
-const config = require('./config')
+const env = require('./config/env')
 
 const MAX_PORT_ATTEMPTS = 10
 
@@ -22,4 +22,4 @@ function startServer (port, attemptsLeft) {
   })
 }
 
-startServer(config.server.port, MAX_PORT_ATTEMPTS)
+startServer(env.server.port, MAX_PORT_ATTEMPTS)

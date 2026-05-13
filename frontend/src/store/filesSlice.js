@@ -3,7 +3,7 @@ import {
   detectApiBaseUrl,
   fetchFilesData,
   fetchFilesList
-} from './filesApi'
+} from '../api/filesApi'
 
 const initialState = {
   availableFiles: [],

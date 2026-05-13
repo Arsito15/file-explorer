@@ -3,8 +3,8 @@
 const { expect } = require('chai')
 const http = require('http')
 
-const app = require('../src/app')
-const config = require('../src/config')
+const app = require('../../src/app')
+const env = require('../../src/config/env')
 
 const AUTH_TOKEN = 'Bearer aSuperSecretKey'
 
@@ -91,17 +91,17 @@ describe('GET /files/data', () => {
   before(async () => {
     appServer = http.createServer(app)
     appPort = await listen(appServer)
-    originalBaseUrl = config.externalApi.baseUrl
+    originalBaseUrl = env.externalApi.baseUrl
   })
 
   after(async () => {
-    config.externalApi.baseUrl = originalBaseUrl
+    env.externalApi.baseUrl = originalBaseUrl
     await close(mockApiServer)
     await close(appServer)
   })
 
   afterEach(async () => {
-    config.externalApi.baseUrl = originalBaseUrl
+    env.externalApi.baseUrl = originalBaseUrl
     await close(mockApiServer)
     mockApiServer = null
   })
@@ -119,7 +119,7 @@ describe('GET /files/data', () => {
     })
 
     const mockApiPort = await listen(mockApiServer)
-    config.externalApi.baseUrl = `http://127.0.0.1:${mockApiPort}`
+    env.externalApi.baseUrl = `http://127.0.0.1:${mockApiPort}`
 
     const response = await requestJson(appPort, '/files/list')
 
@@ -169,7 +169,7 @@ describe('GET /files/data', () => {
     })
 
     const mockApiPort = await listen(mockApiServer)
-    config.externalApi.baseUrl = `http://127.0.0.1:${mockApiPort}`
+    env.externalApi.baseUrl = `http://127.0.0.1:${mockApiPort}`
 
     const response = await requestJson(appPort, '/files/data')
 
@@ -223,7 +223,7 @@ describe('GET /files/data', () => {
     })
 
     const mockApiPort = await listen(mockApiServer)
-    config.externalApi.baseUrl = `http://127.0.0.1:${mockApiPort}`
+    env.externalApi.baseUrl = `http://127.0.0.1:${mockApiPort}`
 
     const response = await requestJson(appPort, '/files/data?fileName=file2.csv')
 
@@ -256,7 +256,7 @@ describe('GET /files/data', () => {
     })
 
     const mockApiPort = await listen(mockApiServer)
-    config.externalApi.baseUrl = `http://127.0.0.1:${mockApiPort}`
+    env.externalApi.baseUrl = `http://127.0.0.1:${mockApiPort}`
 
     const response = await requestJson(appPort, '/files/data')
 

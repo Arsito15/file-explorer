@@ -12,8 +12,8 @@ import {
   Table
 } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadFilesData, selectFilesState, setSelectedFile } from './filesSlice';
-import { flattenFiles, sortFiles } from './filesSelectors';
+import { loadFilesData, selectFilesState, setSelectedFile } from '../store/filesSlice';
+import { flattenFiles, sortFiles } from '../store/filesSelectors';
 
 const h = React.createElement;
 

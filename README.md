@@ -1,55 +1,62 @@
 # File Explorer
 
-Proyecto con dos aplicaciones:
+This project contains two applications:
 
-- `api`: API REST en Node.js + Express
-- `frontend`: cliente React que consume la API local
+- `api`: a Node.js + Express REST API
+- `frontend`: a React client that consumes the local API
 
-## Vista Previa
+## Preview
 
-![Vista previa del programa](assets/preview.jpeg)
+![Application preview](assets/preview.jpeg)
 
-## Correr con Docker Compose
+## Run With Docker Compose
 
-Desde la raiz del proyecto:
+Before starting with Docker Compose, make sure the API environment file exists:
+
+```powershell
+cd api
+Copy-Item .env.example .env
+cd ..
+```
+
+From the project root:
 
 ```powershell
 docker compose up --build
 ```
 
-## Correr con Makefile
+## Run With Makefile
 
-Tambien puedes usar comandos mas cortos desde la raiz del proyecto:
+You can also use shorter commands from the project root:
 
 ```powershell
 make up
 ```
 
-Comandos disponibles:
+Available commands:
 
-- `make up`: construye y levanta las apps
-- `make down`: baja los contenedores
-- `make build`: construye las imagenes
-- `make rebuild`: reconstruye sin cache
-- `make logs`: muestra logs en vivo
-- `make ps`: muestra los servicios
-- `make restart`: reinicia el stack
-- `make clean`: baja contenedores y elimina volumenes
-- `make test`: corre tests de api y frontend
+- `make up`: build and start the apps
+- `make down`: stop the containers
+- `make build`: build the images
+- `make rebuild`: rebuild without cache
+- `make logs`: show live logs
+- `make ps`: show running services
+- `make restart`: restart the stack
+- `make clean`: stop containers and remove volumes
+- `make test`: run API and frontend tests
 
-
-Servicios publicados:
+Published services:
 
 - Frontend: `http://localhost:8080`
 - API: `http://localhost:3001`
 
-Endpoints utiles:
+Useful endpoints:
 
 - `GET http://localhost:3001/files/list`
 - `GET http://localhost:3001/files/data`
 - `GET http://localhost:3001/files/data?fileName=file1.csv`
 
-Para detener los contenedores:
+To stop the containers:
 
 ```powershell
 docker compose down

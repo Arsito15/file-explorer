@@ -2,7 +2,7 @@ import {
   buildFilesDataUrl,
   fetchFilesData,
   fetchFilesList
-} from '../filesApi'
+} from '../api/filesApi'
 
 describe('filesApi', () => {
   it('builds the data url without query for all files', () => {

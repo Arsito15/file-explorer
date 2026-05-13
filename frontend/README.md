@@ -1,13 +1,13 @@
 # Frontend
 
-Aplicacion React en JavaScript ES6+ que consume `GET /files/data` del API local y muestra la informacion en una tabla con filtro por archivo.
+React application written in ES6+ JavaScript that consumes the local API and displays the returned data in a table with file filtering.
 
-## Requisitos
+## Requirements
 
 - Node.js 16
 - npm
 
-## Instalacion
+## Installation
 
 ```powershell
 cd D:\DOCS\Docs\file-explorer\frontend
@@ -15,11 +15,11 @@ nvm use 16
 npm install
 ```
 
-## Ejecutar
+## Run
 
-Primero levanta el backend en otra terminal.
+First start the backend in another terminal.
 
-Luego ejecuta el frontend:
+Then start the frontend:
 
 ```powershell
 cd D:\DOCS\Docs\file-explorer\frontend
@@ -27,7 +27,7 @@ nvm use 16
 npm start
 ```
 
-La aplicacion queda disponible en:
+The application will be available at:
 
 ```text
 http://localhost:8080
@@ -35,39 +35,39 @@ http://localhost:8080
 
 ## Docker
 
-Build de la imagen:
+Build the image:
 
 ```powershell
 docker build -t files-frontend .
 ```
 
-Ejecutar contenedor:
+Run the container:
 
 ```powershell
 docker run --rm -p 8080:80 files-frontend
 ```
 
-La aplicacion servida por Docker queda disponible en:
+The Docker-served application will be available at:
 
 ```text
 http://localhost:8080
 ```
 
-## Como funciona
+## How It Works
 
-- Busca el API local entre los puertos `3001` y `3010`
-- Consulta `GET /files/list`
-- Consulta `GET /files/data` o `GET /files/data?fileName=...`
-- Muestra archivos, cantidad de lineas y la tabla completa
-- Permite filtrar visualmente por `file`
+- It looks for the local API between ports `3001` and `3010`
+- It calls `GET /files/list`
+- It calls `GET /files/data` or `GET /files/data?fileName=...`
+- It shows files, line counts, and the full table
+- It lets users visually filter by `file`
 
-## Build de produccion
+## Production Build
 
 ```powershell
 npm run build
 ```
 
-Compose desde la raiz del proyecto:
+Run Compose from the project root:
 
 ```powershell
 docker compose up --build
